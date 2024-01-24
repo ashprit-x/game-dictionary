@@ -21,12 +21,17 @@ export interface Game {
   rating: number;
 }
 
-const useGames = (
-  gameQuery: gameQuery
-) =>
+const useGames = (gameQuery: gameQuery) =>
   useData<Game>(
     "/games",
-    { params: { genres: gameQuery.genre?.id, platforms: gameQuery.platform?.id, ordering: gameQuery.sortOrder, search: gameQuery.searchText } },
+    {
+      params: {
+        genres: gameQuery.genre?.id,
+        platforms: gameQuery.platform?.id,
+        ordering: gameQuery.sortOrder,
+        search: gameQuery.searchText,
+      },
+    },
     [gameQuery]
   );
 export default useGames;
